@@ -16,9 +16,25 @@ Unsuccessful Return - As a customer, I would like to be notified if the book I a
 */
 
 public class BibliotecaApp {
+    public static Library currentLibrary = new Library();
 
     public static void main(String[] args) {
-        System.out.println("Hello there! Welcome to Biblioteca!");
+        String welcome = welcome();
+        System.out.println(welcome);
 
+        String books = printBooks();
+        System.out.println(books);
+    }
+
+    static String welcome() {
+        return "Hello there! Welcome to Biblioteca!";
+    }
+
+    static Integer checkUser() {
+        return 1;
+    }
+
+    static String printBooks() {
+        return currentLibrary.toString();
     }
 }
