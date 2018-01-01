@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd5fb4c7-851c-4f15-b82b-e49095b7077d" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/Book.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/Library.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/biblioteca/com/twu/biblioteca/BibliotecaApp.class" afterPath="$PROJECT_DIR$/out/production/biblioteca/com/twu/biblioteca/BibliotecaApp.class" />
-      <change beforePath="$PROJECT_DIR$/out/test/biblioteca/com/twu/biblioteca/ExampleTest.class" afterPath="$PROJECT_DIR$/out/test/biblioteca/com/twu/biblioteca/ExampleTest.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/biblioteca/com/twu/biblioteca/BibliotecaApp.class" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java" />
       <change beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/ExampleTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/ExampleTest.java" />
     </list>
@@ -25,15 +22,17 @@
           <file leaf-file-name="BibliotecaApp.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="89">
-                  <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+                <state relative-caret-position="225">
+                  <caret line="55" column="27" lean-forward="true" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
                   <folding>
-                    <element signature="e#2804#2805#0" expanded="true" />
-                    <element signature="e#2864#2865#0" expanded="true" />
-                    <element signature="e#2898#2899#0" expanded="true" />
-                    <element signature="e#2922#2923#0" expanded="true" />
-                    <element signature="e#2956#2957#0" expanded="true" />
-                    <element signature="e#3004#3005#0" expanded="true" />
+                    <element signature="e#3138#3139#0" expanded="true" />
+                    <element signature="e#3167#3168#0" expanded="true" />
+                    <element signature="e#3198#3199#0" expanded="true" />
+                    <element signature="e#3258#3259#0" expanded="true" />
+                    <element signature="e#3292#3293#0" expanded="true" />
+                    <element signature="e#3340#3341#0" expanded="true" />
+                    <element signature="e#3382#3383#0" expanded="true" />
+                    <element signature="e#3427#3428#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -46,12 +45,10 @@
           <file leaf-file-name="ExampleTest.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/ExampleTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="228">
-                  <caret line="40" column="42" lean-forward="false" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+                <state relative-caret-position="391">
+                  <caret line="47" column="50" lean-forward="false" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="50" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#478#479#0" expanded="true" />
-                    <element signature="e#511#512#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -390,24 +387,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ExampleTest - 2017.12.30 at 23h 34m 44s.xml">
-      <configuration name="ExampleTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ExampleTest - 2017.12.30 at 23h 34m 58s.xml">
-      <configuration name="ExampleTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ExampleTest - 2017.12.30 at 23h 35m 54s.xml">
-      <configuration name="ExampleTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ExampleTest - 2017.12.30 at 23h 36m 31s.xml">
-      <configuration name="ExampleTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ExampleTest - 2017.12.30 at 23h 36m 58s.xml">
-      <configuration name="ExampleTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ExampleTest - 2018.01.01 at 13h 01m 07s.xml">
-      <configuration name="ExampleTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ExampleTest - 2018.01.01 at 13h 05m 43s.xml">
       <configuration name="ExampleTest" configurationId="JUnit" />
     </history-entry>
@@ -418,6 +397,24 @@
       <configuration name="ExampleTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="ExampleTest - 2018.01.01 at 13h 33m 30s.xml">
+      <configuration name="ExampleTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ExampleTest - 2018.01.01 at 14h 05m 39s.xml">
+      <configuration name="ExampleTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ExampleTest - 2018.01.01 at 14h 13m 03s.xml">
+      <configuration name="ExampleTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ExampleTest - 2018.01.01 at 14h 24m 54s.xml">
+      <configuration name="ExampleTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ExampleTest - 2018.01.01 at 14h 28m 18s.xml">
+      <configuration name="ExampleTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ExampleTest - 2018.01.01 at 14h 28m 51s.xml">
+      <configuration name="ExampleTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ExampleTest - 2018.01.01 at 14h 30m 15s.xml">
       <configuration name="ExampleTest" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -458,7 +455,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -467,12 +466,14 @@
         <state relative-caret-position="340">
           <caret line="20" column="63" lean-forward="false" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="63" />
           <folding>
-            <element signature="e#2804#2805#0" expanded="true" />
-            <element signature="e#2864#2865#0" expanded="true" />
-            <element signature="e#2898#2899#0" expanded="true" />
-            <element signature="e#2922#2923#0" expanded="true" />
-            <element signature="e#2956#2957#0" expanded="true" />
-            <element signature="e#3004#3005#0" expanded="true" />
+            <element signature="e#3138#3139#0" expanded="true" />
+            <element signature="e#3167#3168#0" expanded="true" />
+            <element signature="e#3198#3199#0" expanded="true" />
+            <element signature="e#3258#3259#0" expanded="true" />
+            <element signature="e#3292#3293#0" expanded="true" />
+            <element signature="e#3340#3341#0" expanded="true" />
+            <element signature="e#3382#3383#0" expanded="true" />
+            <element signature="e#3427#3428#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -483,8 +484,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#478#479#0" expanded="true" />
-            <element signature="e#511#512#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -528,29 +527,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/ExampleTest.java">
+    <entry file="file://$PROJECT_DIR$/src/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="40" column="42" lean-forward="false" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#478#479#0" expanded="true" />
-            <element signature="e#511#512#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="19" lean-forward="true" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="225">
+          <caret line="55" column="27" lean-forward="true" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
           <folding>
-            <element signature="e#2804#2805#0" expanded="true" />
-            <element signature="e#2864#2865#0" expanded="true" />
-            <element signature="e#2898#2899#0" expanded="true" />
-            <element signature="e#2922#2923#0" expanded="true" />
-            <element signature="e#2956#2957#0" expanded="true" />
-            <element signature="e#3004#3005#0" expanded="true" />
+            <element signature="e#3138#3139#0" expanded="true" />
+            <element signature="e#3167#3168#0" expanded="true" />
+            <element signature="e#3198#3199#0" expanded="true" />
+            <element signature="e#3258#3259#0" expanded="true" />
+            <element signature="e#3292#3293#0" expanded="true" />
+            <element signature="e#3340#3341#0" expanded="true" />
+            <element signature="e#3382#3383#0" expanded="true" />
+            <element signature="e#3427#3428#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/ExampleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="47" column="50" lean-forward="false" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -6,6 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
+import java.io.ByteArrayInputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
@@ -17,7 +18,7 @@ public class ExampleTest {
 
     @BeforeClass
     public static void setupOutputStream() {
-        System.setOut(ps);
+        //System.setOut(ps);
     }
 
     @AfterClass
@@ -34,11 +35,35 @@ public class ExampleTest {
     }
 
     @Test
-    public void selectUserTest() {
+    public void displayMainMenuTest() {
         BibliotecaApp tester = new BibliotecaApp();
-        Integer user = tester.checkUser();
-        Integer expectedValue = 1;
-        assertEquals(expectedValue, user);
+        String menu = tester.displayCustomerMenu();
+        String expected = "Options:\nList books";
+        assertEquals(expected, menu);
+    }
+
+    @Test
+    public void selectValidMenuOption() {
+        BibliotecaApp tester = new BibliotecaApp();
+        String output = tester.validateUserInput("List Books");
+        String expected = "It's Your Friend Mr Dude(2002) by Mr Dude\nHawkeye: An auto/biography(2010) by Katie Kate\nFigure Out What You Want To Say(2015) by Steven Universe\n";
+        assertEquals(expected, output);
+    }
+
+    @Test
+    public void selectInvalidMenuOption() {
+        BibliotecaApp tester = new BibliotecaApp();
+        String output = tester.validateUserInput("Help meee");
+        String expected = "Select a valid option!\n";
+        assertEquals(expected, output);
+    }
+
+    @Test
+    public void quitTest() {
+        BibliotecaApp tester = new BibliotecaApp();
+        String output = tester.validateUserInput("quit");
+        Boolean expected = false;
+        assertEquals(expected, tester.quit);
     }
 
     @Test

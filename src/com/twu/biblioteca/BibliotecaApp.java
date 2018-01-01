@@ -15,26 +15,54 @@ Successful Return - As a customer, I would like to be notified if the book I am 
 Unsuccessful Return - As a customer, I would like to be notified if the book I am returning has not been added to this library by seeing the message, “That is not a valid book to return.”, so that I can return it to the correct library or fix my spelling error.
 */
 
+import java.util.Scanner;
+
 public class BibliotecaApp {
     public static Library currentLibrary = new Library();
+    private static Scanner scanner = new Scanner(System.in);
+    public static Boolean quit = false;
 
     public static void main(String[] args) {
         String welcome = welcome();
         System.out.println(welcome);
 
-        String books = printBooks();
-        System.out.println(books);
+        String menu = displayCustomerMenu();
+        System.out.println(menu);
+
+        while (quit == false) {
+            String input = scanner.nextLine();
+            String output = validateUserInput(input);
+            System.out.print(output);
+        }
+    }
+
+    static void setQuitStatus(Boolean status){
+        quit = status;
     }
 
     static String welcome() {
         return "Hello there! Welcome to Biblioteca!";
     }
 
-    static Integer checkUser() {
-        return 1;
-    }
-
     static String printBooks() {
         return currentLibrary.toString();
+    }
+
+    static String displayCustomerMenu(){
+        return "Options:\nList books";
+    }
+
+    static String validateUserInput(String input){
+        String output = "";
+
+        if (input.equalsIgnoreCase("quit")) {
+            setQuitStatus(false);
+        } else if (input.equalsIgnoreCase("list books")) {
+            output = printBooks();
+        } else {
+            output = "Select a valid option!\n";
+        }
+
+        return output;
     }
 }
