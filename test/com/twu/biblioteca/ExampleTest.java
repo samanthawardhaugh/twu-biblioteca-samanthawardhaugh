@@ -73,4 +73,34 @@ public class ExampleTest {
         String actual = tester.printBooks();
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void checkOutBookSuccessfullyTest(){
+        BibliotecaApp tester = new BibliotecaApp();
+        String output = tester.validateUserInput("Check out Figure Out What You Want To Say");
+        String expected = "Thank you! Enjoy the book\n";
+        assertEquals(expected, output);
+    }
+
+    @Test
+    public void checkOutBookUnsuccessfullyTest(){
+        BibliotecaApp tester = new BibliotecaApp();
+        String output = tester.validateUserInput("Check out The Adventure Zone");
+        String expected = "That book is not available.\n";
+        assertEquals(expected, output);
+    }
+
+    @Test
+    public void updateBookListTest() {
+        BibliotecaApp tester = new BibliotecaApp();
+        String bookList = tester.validateUserInput("List Books");
+        String expectedBooks = "It's Your Friend Mr Dude(2002) by Mr Dude\nHawkeye: An auto/biography(2010) by Katie Kate\nFigure Out What You Want To Say(2015) by Steven Universe\n";
+        assertEquals(expectedBooks, bookList);
+
+        tester.validateUserInput("Check out Figure Out What You Want To Say");
+
+        String updatedBookList = tester.validateUserInput("List Books");
+        String newExpectedBooks = "It's Your Friend Mr Dude(2002) by Mr Dude\nHawkeye: An auto/biography(2010) by Katie Kate\n";
+        assertEquals(newExpectedBooks, updatedBookList);
+    }
 }

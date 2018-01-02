@@ -4,6 +4,15 @@ public class Book {
     public String title;
     public String author;
     public Integer year;
+    public Boolean checkedOut = false;
+
+    public Boolean getCheckedOut() {
+        return checkedOut;
+    }
+
+    public void setCheckedOut(Boolean checkedOut) {
+        this.checkedOut = checkedOut;
+    }
 
     public String getTitle() {
         return title;

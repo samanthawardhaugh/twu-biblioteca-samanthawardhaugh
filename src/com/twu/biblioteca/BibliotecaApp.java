@@ -1,12 +1,6 @@
 package com.twu.biblioteca;
 
 /*
-Welcome Message  - As a customer, I would like to see a welcome message when I start the application, so that I feel welcome and know that Biblioteca is available.
-List Books - As a customer, after the welcome message appears I would like to see a list of all library books, so that I can browse for books I might want to check-out. Assume that there is a pre-existing list of books. You don't need to support adding or removing books from the library.
-Book Details - As a customer, I'd like the list of all books to include each books Author and Year Published, so that I can be confident that I have found the book I am looking for. The book listing should have columns for this information.
-Main Menu  - As a customer, instead of automatically seeing the book list, I would like to see a list of options and be able to choose one. For now, the only option should be 'List Books'. All future options should be added to this menu also.
-Invalid Menu Option - As a customer, I would like to be notified when I choose an invalid option with the message “Select a valid option!”, so that I can know when I need to re-enter my choice.
-Quit - As a customer, I would like to continue choosing options until I choose to 'Quit'.
 Checkout Book - As a librarian, I would like customers to be able to check-out a book. Checked out books should not appear in the list of all library books.
 Successful Checkout - As a customer, I would like to know that a book has been checked out by seeing the message “Thank you! Enjoy the book”.
 Unsuccessful Checkout - As a customer, I would like to be notified if the book I tried to check-out is not available by seeing the message, “That book is not available.”, so that I know that I need to select a different book or fix my spelling error.
@@ -18,9 +12,15 @@ Unsuccessful Return - As a customer, I would like to be notified if the book I a
 import java.util.Scanner;
 
 public class BibliotecaApp {
-    public static Library currentLibrary = new Library();
-    private static Scanner scanner = new Scanner(System.in);
-    public static Boolean quit = false;
+    public static Library currentLibrary;
+    private static Scanner scanner;
+    public static Boolean quit;
+
+    public BibliotecaApp() {
+        currentLibrary = new Library();
+        scanner = new Scanner(System.in);
+        quit = false;
+    }
 
     public static void main(String[] args) {
         String welcome = welcome();
@@ -59,10 +59,29 @@ public class BibliotecaApp {
             setQuitStatus(false);
         } else if (input.equalsIgnoreCase("list books")) {
             output = printBooks();
+        } else if (input.startsWith("Check out")) {
+            Boolean realBook = checkOutValidBook(input);
+            if (realBook == false) {
+                output = "That book is not available.\n";
+            } else {
+                output = "Thank you! Enjoy the book\n";
+            }
         } else {
             output = "Select a valid option!\n";
         }
 
         return output;
+    }
+
+    static Boolean checkOutValidBook(String input) {
+        String bookTitle = input.replace("Check out ", "").trim();
+        Integer book_pos = currentLibrary.getBookPosition(bookTitle);
+
+        if (book_pos == -1) {
+            return false;
+        } else {
+            currentLibrary.checkOutBookInLibrary(book_pos);
+            return true;
+        }
     }
 }

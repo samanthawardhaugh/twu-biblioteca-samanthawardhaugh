@@ -29,9 +29,29 @@ public class Library {
     public String toString() {
         String returnStr = "";
         for (int i = 0; i < bookList.size(); i++) {
-            returnStr = returnStr + bookList.get(i).toString();
-            returnStr = returnStr + "\n";
+            if (bookList.get(i).getCheckedOut() == false) {
+                returnStr = returnStr + bookList.get(i).toString();
+                returnStr = returnStr + "\n";
+            }
         }
         return returnStr;
+    }
+
+    public Integer getBookPosition(String bookTitle) {
+
+        for (int i = 0; i < bookList.size(); i++) {
+            if (bookList.get(i).getTitle().equals(bookTitle)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void checkOutBookInLibrary(Integer book) {
+        bookList.get(book).setCheckedOut(true);
+    }
+
+    public void returnBookInLibrary(Integer book) {
+        bookList.get(book).setCheckedOut(false);
     }
 }
