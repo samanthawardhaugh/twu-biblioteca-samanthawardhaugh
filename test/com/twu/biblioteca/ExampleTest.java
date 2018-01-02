@@ -38,7 +38,7 @@ public class ExampleTest {
     public void displayMainMenuTest() {
         BibliotecaApp tester = new BibliotecaApp();
         String menu = tester.displayCustomerMenu();
-        String expected = "Options:\nList books";
+        String expected = "Options:\nList books\tQuit";
         assertEquals(expected, menu);
     }
 
@@ -62,7 +62,7 @@ public class ExampleTest {
     public void quitTest() {
         BibliotecaApp tester = new BibliotecaApp();
         String output = tester.validateUserInput("quit");
-        Boolean expected = false;
+        Boolean expected = true;
         assertEquals(expected, tester.quit);
     }
 
@@ -91,7 +91,7 @@ public class ExampleTest {
     }
 
     @Test
-    public void updateBookListTest() {
+    public void updateBookListOnCheckoutTest() {
         BibliotecaApp tester = new BibliotecaApp();
         String bookList = tester.validateUserInput("List Books");
         String expectedBooks = "It's Your Friend Mr Dude(2002) by Mr Dude\nHawkeye: An auto/biography(2010) by Katie Kate\nFigure Out What You Want To Say(2015) by Steven Universe\n";
@@ -101,6 +101,41 @@ public class ExampleTest {
 
         String updatedBookList = tester.validateUserInput("List Books");
         String newExpectedBooks = "It's Your Friend Mr Dude(2002) by Mr Dude\nHawkeye: An auto/biography(2010) by Katie Kate\n";
+        assertEquals(newExpectedBooks, updatedBookList);
+    }
+
+    @Test
+    public void returnBookSuccessfullyTest(){
+        BibliotecaApp tester = new BibliotecaApp();
+        tester.validateUserInput("Check out Figure Out What You Want To Say");
+        String output = tester.validateUserInput("Return Figure Out What You Want To Say");
+        String expected = "Thank you for returning the book.\n";
+        assertEquals(expected, output);
+    }
+
+    @Test
+    public void returnBookUnsuccessfullyTest(){
+        BibliotecaApp tester = new BibliotecaApp();
+        tester.validateUserInput("Check out Figure Out What You Want To Say");
+        String output = tester.validateUserInput("Return Figure Out What You Want");
+        String expected = "That is not a valid book to return.\n";
+        assertEquals(expected, output);
+    }
+
+    @Test
+    public void updateBookListOnReturnTest() {
+        BibliotecaApp tester = new BibliotecaApp();
+
+        tester.validateUserInput("Check out Figure Out What You Want To Say");
+
+        String bookList = tester.validateUserInput("List Books");
+        String expectedBooks = "It's Your Friend Mr Dude(2002) by Mr Dude\nHawkeye: An auto/biography(2010) by Katie Kate\n";
+        assertEquals(expectedBooks, bookList);
+
+        String output = tester.validateUserInput("Return Figure Out What You Want To Say");
+
+        String updatedBookList = tester.validateUserInput("List Books");
+        String newExpectedBooks = "It's Your Friend Mr Dude(2002) by Mr Dude\nHawkeye: An auto/biography(2010) by Katie Kate\nFigure Out What You Want To Say(2015) by Steven Universe\n";
         assertEquals(newExpectedBooks, updatedBookList);
     }
 }

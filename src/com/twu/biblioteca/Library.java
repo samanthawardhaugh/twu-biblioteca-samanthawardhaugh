@@ -40,7 +40,7 @@ public class Library {
     public Integer getBookPosition(String bookTitle) {
 
         for (int i = 0; i < bookList.size(); i++) {
-            if (bookList.get(i).getTitle().equals(bookTitle)) {
+            if (bookList.get(i).getTitle().equalsIgnoreCase(bookTitle)) {
                 return i;
             }
         }
