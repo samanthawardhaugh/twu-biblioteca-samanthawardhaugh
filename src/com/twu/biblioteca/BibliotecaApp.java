@@ -2,6 +2,15 @@ package com.twu.biblioteca;
 
 import java.util.Scanner;
 
+/*
+List Movies - As a customer, I would like to see a list of available movies, so that I can browse for a movie that I might check-out. Movies have a name, year, director and movie rating (from 1-10 or unrated).
+
+Check-out Movie - As a customer, I would like to check out a movie from the library, so I can enjoy it at home.
+
+User Accounts - Login - As a librarian, I want to know who has checked out a book, so that I can hold them accountable for returning it. Users must now login using their library number (which is in the format xxx-xxxx) and a password in order to check-out and return books. User credentials are predefined, so registering new users is not part of this story.
+
+User Accounts - User information - As a customer, I want to be able to see my user information (name, email address and phone number), so that I know that the library can contact me. This option should only be available when the customer is logged in and should only display that customer’s information.*/
+
 public class BibliotecaApp {
     public static Library currentLibrary;
     private static Scanner scanner;
@@ -41,11 +50,15 @@ public class BibliotecaApp {
     }
 
     public String printBooks() {
-        return currentLibrary.toString();
+        return currentLibrary.printBookList();
+    }
+
+    public String printMovies() {
+        return currentLibrary.printMovieList();
     }
 
     public String displayCustomerMenu(){
-        return "Options:\nList books\tQuit";
+        return "Options:\nList books\tList movies\tQuit";
     }
 
     public String validateUserInput(String input){
@@ -55,20 +68,14 @@ public class BibliotecaApp {
             setQuitStatus(true);
         } else if (lowerInput.equals("list books")) {
             output = printBooks();
+        } else if (lowerInput.equals("list movies")) {
+            output = printMovies();
         } else if (lowerInput.startsWith("check out")) {
-            Boolean realBook = checkOutBook(input);
-            if (realBook == false) {
-                output = "That book is not available.\n";
-            } else {
-                output = "Thank you! Enjoy the book\n";
-            }
+            String response = checkOutItem(input);
+            output = response;
         } else if (lowerInput.startsWith("return")) {
-            Boolean realBook = returnBook(input);
-            if (realBook == false) {
-                output = "That is not a valid book to return.\n";
-            } else {
-                output = "Thank you for returning the book.\n";
-            }
+            String response = returnItem(input);
+            output = response;
         } else {
             output = "Select a valid option!\n";
         }
@@ -76,27 +83,47 @@ public class BibliotecaApp {
         return output;
     }
 
-    public Boolean checkOutBook(String input) {
-        String bookTitle = input.replace("Check out ", "").trim();
-        Integer book_pos = currentLibrary.getBookPosition(bookTitle);
+    public String checkOutItem(String input) {
+        String ret_str = "That item is not available.\n";
+
+        String title = input.replace("Check out ", "").trim();
+        Integer book_pos = currentLibrary.getBookPosition(title);
 
         if (book_pos == -1) {
-            return false;
+            Integer movie_pos = currentLibrary.getMoviePosition(title);
+            if (movie_pos == -1) {
+                return ret_str;
+            } else {
+                currentLibrary.checkOutMovieInLibrary(movie_pos);
+                ret_str = "Thank you! Enjoy the movie\n";
+                return ret_str;
+            }
         } else {
             currentLibrary.checkOutBookInLibrary(book_pos);
-            return true;
+            ret_str = "Thank you! Enjoy the book\n";
+            return ret_str;
         }
     }
 
-    public Boolean returnBook(String input) {
-        String bookTitle = input.replace("Return ", "").trim();
-        Integer book_pos = currentLibrary.getBookPosition(bookTitle);
+    public String returnItem(String input) {
+        String ret_str = "That is not a valid item to return.\n";
+
+        String title = input.replace("Return ", "").trim();
+        Integer book_pos = currentLibrary.getBookPosition(title);
 
         if (book_pos == -1) {
-            return false;
+            Integer movie_pos = currentLibrary.getMoviePosition(title);
+            if (movie_pos == -1) {
+                return ret_str;
+            } else {
+                currentLibrary.returnMovieInLibrary(movie_pos);
+                ret_str = "Thank you for returning the movie.\n";
+                return ret_str;
+            }
         } else {
             currentLibrary.returnBookInLibrary(book_pos);
-            return true;
+            ret_str = "Thank you for returning the book.\n";
+            return ret_str;
         }
     }
 

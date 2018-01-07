@@ -38,7 +38,7 @@ public class ExampleTest {
     public void displayMainMenuTest() {
         BibliotecaApp tester = new BibliotecaApp();
         String menu = tester.displayCustomerMenu();
-        String expected = "Options:\nList books\tQuit";
+        String expected = "Options:\nList books\tList movies\tQuit";
         assertEquals(expected, menu);
     }
 
@@ -67,10 +67,18 @@ public class ExampleTest {
     }
 
     @Test
-    public void displayCustomerHomePageTest(){
+    public void displayListOfBooksTest(){
         BibliotecaApp tester = new BibliotecaApp();
         String expected = "It's Your Friend Mr Dude(2002) by Mr Dude\nHawkeye: An auto/biography(2010) by Katie Kate\nFigure Out What You Want To Say(2015) by Steven Universe\n";
         String actual = tester.printBooks();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void displayListOfMoviesTest(){
+        BibliotecaApp tester = new BibliotecaApp();
+        String expected = "Thor: Ragnarok (2017) - 10/10\nThe Room (2003) - 0/10\n";
+        String actual = tester.printMovies();
         assertEquals(expected, actual);
     }
 
@@ -86,7 +94,23 @@ public class ExampleTest {
     public void checkOutBookUnsuccessfullyTest(){
         BibliotecaApp tester = new BibliotecaApp();
         String output = tester.validateUserInput("Check out The Adventure Zone");
-        String expected = "That book is not available.\n";
+        String expected = "That item is not available.\n";
+        assertEquals(expected, output);
+    }
+
+    @Test
+    public void checkOutMovieSuccessfullyTest(){
+        BibliotecaApp tester = new BibliotecaApp();
+        String output = tester.validateUserInput("Check out The Room");
+        String expected = "Thank you! Enjoy the movie\n";
+        assertEquals(expected, output);
+    }
+
+    @Test
+    public void checkOutMovieUnsuccessfullyTest(){
+        BibliotecaApp tester = new BibliotecaApp();
+        String output = tester.validateUserInput("Check out Sawbones");
+        String expected = "That item is not available.\n";
         assertEquals(expected, output);
     }
 
@@ -105,6 +129,20 @@ public class ExampleTest {
     }
 
     @Test
+    public void updateMovieListOnCheckoutTest() {
+        BibliotecaApp tester = new BibliotecaApp();
+        String movieList = tester.validateUserInput("List Movies");
+        String expectedMovies = "Thor: Ragnarok (2017) - 10/10\nThe Room (2003) - 0/10\n";
+        assertEquals(expectedMovies, movieList);
+
+        tester.validateUserInput("Check out The Room");
+
+        String updatedMovieList = tester.validateUserInput("List Movies");
+        String newExpectedMovies = "Thor: Ragnarok (2017) - 10/10\n";
+        assertEquals(newExpectedMovies, updatedMovieList);
+    }
+
+    @Test
     public void returnBookSuccessfullyTest(){
         BibliotecaApp tester = new BibliotecaApp();
         tester.validateUserInput("Check out Figure Out What You Want To Say");
@@ -118,7 +156,25 @@ public class ExampleTest {
         BibliotecaApp tester = new BibliotecaApp();
         tester.validateUserInput("Check out Figure Out What You Want To Say");
         String output = tester.validateUserInput("Return Figure Out What You Want");
-        String expected = "That is not a valid book to return.\n";
+        String expected = "That is not a valid item to return.\n";
+        assertEquals(expected, output);
+    }
+
+    @Test
+    public void returnMovieSuccessfullyTest(){
+        BibliotecaApp tester = new BibliotecaApp();
+        tester.validateUserInput("Check out The Room");
+        String output = tester.validateUserInput("Return The Room");
+        String expected = "Thank you for returning the movie.\n";
+        assertEquals(expected, output);
+    }
+
+    @Test
+    public void returnMovieUnsuccessfullyTest(){
+        BibliotecaApp tester = new BibliotecaApp();
+        tester.validateUserInput("Check out The Room");
+        String output = tester.validateUserInput("Return The Roo");
+        String expected = "That is not a valid item to return.\n";
         assertEquals(expected, output);
     }
 
@@ -137,5 +193,22 @@ public class ExampleTest {
         String updatedBookList = tester.validateUserInput("List Books");
         String newExpectedBooks = "It's Your Friend Mr Dude(2002) by Mr Dude\nHawkeye: An auto/biography(2010) by Katie Kate\nFigure Out What You Want To Say(2015) by Steven Universe\n";
         assertEquals(newExpectedBooks, updatedBookList);
+    }
+
+    @Test
+    public void updateMovieListOnReturnTest() {
+        BibliotecaApp tester = new BibliotecaApp();
+
+        tester.validateUserInput("Check out The Room");
+
+        String movieList = tester.validateUserInput("List Movies");
+        String expectedMovies = "Thor: Ragnarok (2017) - 10/10\n";
+        assertEquals(expectedMovies, movieList);
+
+        String output = tester.validateUserInput("Return The Room");
+
+        String updatedMovieList = tester.validateUserInput("List Movies");
+        String newExpectedMovies = "Thor: Ragnarok (2017) - 10/10\nThe Room (2003) - 0/10\n";
+        assertEquals(newExpectedMovies, updatedMovieList);
     }
 }
