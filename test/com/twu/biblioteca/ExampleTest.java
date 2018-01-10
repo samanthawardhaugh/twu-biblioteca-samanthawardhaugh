@@ -38,7 +38,9 @@ public class ExampleTest {
     public void displayMainMenuTest() {
         BibliotecaApp tester = new BibliotecaApp();
         String menu = tester.displayCustomerMenu();
-        String expected = "Options:\nList books\tList movies\tQuit";
+        String expected = "Options:\nLog in\n"
+                + "List books\nList movies\n" +
+                "Check out item\nReturn item\nQuit";
         assertEquals(expected, menu);
     }
 

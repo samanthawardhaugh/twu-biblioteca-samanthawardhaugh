@@ -1,45 +1,36 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Library {
-    public ArrayList<Book> bookList = new ArrayList<Book>();
-    public ArrayList<Movie> movieList = new ArrayList<Movie>();
+    public HashMap<String, Book> bookList = new HashMap<String, Book>();
+    public HashMap<String, Movie> movieList = new HashMap<String, Movie>();
 
     public Library() {
-        Book bookOne = new Book();
-        bookOne.setAuthor("Mr Dude");
-        bookOne.setTitle("It's Your Friend Mr Dude");
-        bookOne.setYear(2002);
+    }
 
-        Book bookTwo = new Book();
-        bookTwo.setAuthor("Katie Kate");
-        bookTwo.setTitle("Hawkeye: An auto/biography");
-        bookTwo.setYear(2010);
+    public Book getBook(String bookTitle) {
+        if (bookList.containsKey(bookTitle)) {
+            return bookList.get(bookTitle);
+        } else {
+            return null;
+        }
+    }
 
-        Book bookThree = new Book();
-        bookThree.setAuthor("Steven Universe");
-        bookThree.setTitle("Figure Out What You Want To Say");
-        bookThree.setYear(2015);
+    public Movie getMovie(String movieTitle) {
+        if (movieList.containsKey(movieTitle)) {
+            return movieList.get(movieTitle);
+        } else {
+            return null;
+        }
+    }
 
-        bookList.add(bookOne);
-        bookList.add(bookTwo);
-        bookList.add(bookThree);
+    public void updateBook(Book updatedBook) {
+        bookList.put(updatedBook.getTitle(), updatedBook);
+    }
 
-        Movie movieOne = new Movie();
-        movieOne.setDirector("Taika Waititi");
-        movieOne.setRating(10);
-        movieOne.setTitle("Thor: Ragnarok");
-        movieOne.setYear(2017);
-
-        Movie movieTwo = new Movie();
-        movieTwo.setDirector("Tommy Wiseau");
-        movieTwo.setRating(0);
-        movieTwo.setTitle("The Room");
-        movieTwo.setYear(2003);
-
-        movieList.add(movieOne);
-        movieList.add(movieTwo);
+    public void updateMovie(Movie updatedMovie) {
+        movieList.put(updatedMovie.getTitle(), updatedMovie);
     }
 
     public Integer getBookPosition(String bookTitle) {
@@ -78,27 +69,28 @@ public class Library {
         movieList.get(movie).setCheckedOut(false);
     }
 
-    public ArrayList<Book> getBookList() {
+    public HashMap<String,Book> getBookList() {
         return bookList;
     }
 
-    public void setBookList(ArrayList<Book> bookList) {
+    public void setBookList(HashMap<String,Book> bookList) {
         this.bookList = bookList;
     }
 
-    public ArrayList<Movie> getMovieList() {
+    public HashMap<String,Movie> getMovieList() {
         return movieList;
     }
 
-    public void setMovieList(ArrayList<Movie> movieList) {
+    public void setMovieList(HashMap<String,Movie> movieList) {
         this.movieList = movieList;
     }
 
     public String printBookList() {
         String returnStr = "";
-        for (int i = 0; i < bookList.size(); i++) {
-            if (bookList.get(i).getCheckedOut() == false) {
-                returnStr = returnStr + bookList.get(i).toString();
+
+        for (String key: bookList.keySet()) {
+            if (bookList.get(key).getCheckedOut() == false) {
+                returnStr = returnStr + bookList.get(key).toString();
                 returnStr = returnStr + "\n";
             }
         }
@@ -107,9 +99,9 @@ public class Library {
 
     public String printMovieList() {
         String returnStr = "";
-        for (int i = 0; i < movieList.size(); i++) {
-            if (movieList.get(i).getCheckedOut() == false) {
-                returnStr = returnStr + movieList.get(i).toString();
+        for (String key: movieList.keySet()) {
+            if (movieList.get(key).getCheckedOut() == false) {
+                returnStr = returnStr + movieList.get(key).toString();
                 returnStr = returnStr + "\n";
             }
         }
