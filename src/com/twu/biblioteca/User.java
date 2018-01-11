@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class User {
-    protected String name;
-    protected String libraryNumber;
-    protected String password;
+    private String name;
+    private String libraryNumber;
+    private String password;
     private String email;
     private String phoneNumber;
     private HashMap<String, Book> borrowedBooks = new HashMap<String, Book>();
     private HashMap<String, Movie> borrowedMovies = new HashMap<String, Movie>();
-    protected Boolean isAdmin;
+    private Boolean isAdmin;
 
     public User() {
         name = "";
@@ -91,7 +91,7 @@ public class User {
 
     @Override
     public String toString() {
-        String userDetails = "Name: " + this.name + "\nEmail: " + this.email + "\nPhone Number: " + this.phoneNumber;
+        String userDetails = "Name: " + this.name + "\nEmail: " + this.email + "\nPhone Number: " + this.phoneNumber + "\n";
         return userDetails;
     }
 }
