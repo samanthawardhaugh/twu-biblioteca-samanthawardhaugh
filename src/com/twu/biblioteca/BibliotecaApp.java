@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -12,7 +11,7 @@ User Accounts - User information - As a customer, I want to be able to see my us
 public class BibliotecaApp {
     public HashMap<String, User> userList;
     public Library currentLibrary;
-    private Scanner scanner;
+    public Scanner scanner;
     public User currentUser;
     public Boolean quit;
 
@@ -107,10 +106,10 @@ public class BibliotecaApp {
 
     public String checkOutItem(String input) {
         if (currentUser == null) {
-            return "You must be logged in to check out an item!";
+            return "You must be logged in to check out an item!\n";
         }
 
-        String title = input.replace("Check out ", "").trim();
+        String title = input.replaceAll("^(?i)check out ", "").trim();
         Book bookToCheckOut = currentLibrary.getBook(title);
         if (bookToCheckOut == null) {
             Movie movieToCheckOut = currentLibrary.getMovie(title);
@@ -138,10 +137,10 @@ public class BibliotecaApp {
 
     public String returnItem(String input) {
         if (currentUser == null) {
-            return "You must be logged in to return an item!";
+            return "You must be logged in to return an item!\n";
         }
 
-        String title = input.replace("Check out ", "").trim();
+        String title = input.replaceAll("^(?i)return ", "").trim();
 
         if (currentUser.getBorrowedBooks().containsKey(title)) {
             Book bookToReturn = currentLibrary.getBook(title);
@@ -149,14 +148,14 @@ public class BibliotecaApp {
             currentLibrary.updateBook(bookToReturn);
             currentUser.getBorrowedBooks().remove(title);
             updateUser(currentUser);
-            return "Thank you for returning the book\n";
+            return "Thank you for returning the book.\n";
         } else if (currentUser.getBorrowedMovies().containsKey(title)) {
             Movie movieToReturn = currentLibrary.getMovie(title);
             movieToReturn.setCheckedOut(false);
             currentLibrary.updateMovie(movieToReturn);
             currentUser.getBorrowedMovies().remove(title);
             updateUser(currentUser);
-            return "Thank you for returning the movie\n";
+            return "Thank you for returning the movie.\n";
         } else {
             return "That is not a valid item to return.\n";
         }
@@ -165,10 +164,10 @@ public class BibliotecaApp {
     public String login() {
 
         if (currentUser != null) {
-            return "Please log out before logging in as a new user!";
+            return "Please log out before logging in as a new user!\n";
         }
 
-        String outcome = "Invalid username and/or password";
+        String outcome = "Invalid username and/or password\n";
 
         System.out.println("Please enter your library number:");
         String libnum = this.scanner.nextLine();
@@ -179,7 +178,7 @@ public class BibliotecaApp {
             User potentialUser = userList.get(libnum.trim());
             if (potentialUser.getPassword().equals(password.trim())) {
                 currentUser = potentialUser;
-                outcome = "Thank you for logging in " + potentialUser.getName();
+                outcome = "Thank you for logging in " + potentialUser.getName() + "\n";
             }
         }
 
@@ -188,16 +187,16 @@ public class BibliotecaApp {
 
     public String logout() {
         if (currentUser == null) {
-            return "You must be logged in to log out!";
+            return "You must be logged in to log out!\n";
         } else {
             currentUser = null;
-            return "You have been successfully logged out!";
+            return "You have been successfully logged out!\n";
         }
     }
 
     public String getUserDetails() {
         if (currentUser == null) {
-            return "You are not logged in!";
+            return "You are not logged in!\n";
 
         } else {
             return currentUser.toString();

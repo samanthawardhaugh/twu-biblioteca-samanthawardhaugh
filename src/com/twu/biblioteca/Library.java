@@ -10,27 +10,27 @@ public class Library {
     }
 
     public Book getBook(String bookTitle) {
-        if (bookList.containsKey(bookTitle)) {
-            return bookList.get(bookTitle);
+        if (this.bookList.containsKey(bookTitle)) {
+            return this.bookList.get(bookTitle);
         } else {
             return null;
         }
     }
 
     public Movie getMovie(String movieTitle) {
-        if (movieList.containsKey(movieTitle)) {
-            return movieList.get(movieTitle);
+        if (this.movieList.containsKey(movieTitle)) {
+            return this.movieList.get(movieTitle);
         } else {
             return null;
         }
     }
 
     public void updateBook(Book updatedBook) {
-        bookList.put(updatedBook.getTitle(), updatedBook);
+        this.bookList.put(updatedBook.getTitle(), updatedBook);
     }
 
     public void updateMovie(Movie updatedMovie) {
-        movieList.put(updatedMovie.getTitle(), updatedMovie);
+        this.movieList.put(updatedMovie.getTitle(), updatedMovie);
     }
 
     public Integer getBookPosition(String bookTitle) {
@@ -54,19 +54,19 @@ public class Library {
     }
 
     public void checkOutBookInLibrary(Integer book) {
-        bookList.get(book).setCheckedOut(true);
+        this.bookList.get(book).setCheckedOut(true);
     }
 
     public void returnBookInLibrary(Integer book) {
-        bookList.get(book).setCheckedOut(false);
+        this.bookList.get(book).setCheckedOut(false);
     }
 
     public void checkOutMovieInLibrary(Integer movie) {
-        movieList.get(movie).setCheckedOut(true);
+        this.movieList.get(movie).setCheckedOut(true);
     }
 
     public void returnMovieInLibrary(Integer movie) {
-        movieList.get(movie).setCheckedOut(false);
+        this.movieList.get(movie).setCheckedOut(false);
     }
 
     public HashMap<String,Book> getBookList() {
@@ -88,9 +88,9 @@ public class Library {
     public String printBookList() {
         String returnStr = "";
 
-        for (String key: bookList.keySet()) {
-            if (bookList.get(key).getCheckedOut() == false) {
-                returnStr = returnStr + bookList.get(key).toString();
+        for (String key: this.bookList.keySet()) {
+            if (this.bookList.get(key).getCheckedOut() == false) {
+                returnStr = returnStr + this.bookList.get(key).toString();
                 returnStr = returnStr + "\n";
             }
         }
@@ -99,9 +99,9 @@ public class Library {
 
     public String printMovieList() {
         String returnStr = "";
-        for (String key: movieList.keySet()) {
-            if (movieList.get(key).getCheckedOut() == false) {
-                returnStr = returnStr + movieList.get(key).toString();
+        for (String key: this.movieList.keySet()) {
+            if (this.movieList.get(key).getCheckedOut() == false) {
+                returnStr = returnStr + this.movieList.get(key).toString();
                 returnStr = returnStr + "\n";
             }
         }
